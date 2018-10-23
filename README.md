@@ -1,52 +1,52 @@
 # Javascript-pong
 <html>
-<canvas id = "gameCanvas" width = "800" height = "600">
-</canvas>
+	<canvas id = "gameCanvas" width = "800" height = "600">
+	</canvas>
 <script>
 //Things that will need to stay frame to frame
-var canvas;
-var canvasContext;
-var ballX = 50;
-var ballY = 50;
-var ballSpeedX = 15;
-var ballSpeedY = 4;
+	var canvas;
+	var canvasContext;
+	var ballX = 50;
+	var ballY = 50;
+	var ballSpeedX = 15;
+	var ballSpeedY = 4;
 
 // Player Score
-var player1Score = 0;
-var player2Score = 0;
-const WINNING_SCORE = 2;
+	var player1Score = 0;
+	var player2Score = 0;
+	const WINNING_SCORE = 2;
 
 //Winning Screen
-var showingWinScreen = false;
+	var showingWinScreen = false;
 
 // Player Paddles
-var paddle1Y = 250;
-var paddle2Y = 250;
-const PADDLE_HEIGHT = 100;
-const PADDLE_THICKNESS = 10;
+	var paddle1Y = 250;
+	var paddle2Y = 250;
+	const PADDLE_HEIGHT = 100;
+	const PADDLE_THICKNESS = 10;
 // How the paddle finds the mouse.
-function calculateMousePos(evt) {
-	var rect = canvas.getBoundingClientRect();
-	var root = document.documentElement;
-	var mouseX = evt.clientX - rect.left - root.scrollLeft;
-	var mouseY = evt.clientY - rect.top - root.scrollTop;
-	return {
-		x:mouseX,
-		y:mouseY
-	};
-}
-// Evt for Clearing Score
-function handleMouseClick(evt) {
-	if(showingWinScreen) {
-		player1Score = 0;
-		player2Score = 0;
-		showingWinScreen = false;
+	function calculateMousePos(evt) {
+		var rect = canvas.getBoundingClientRect();
+		var root = document.documentElement;
+		var mouseX = evt.clientX - rect.left - root.scrollLeft;
+		var mouseY = evt.clientY - rect.top - root.scrollTop;
+		return {
+			x:mouseX,
+			y:mouseY
+		};
 	}
-}
+// Evt for Clearing Score
+	function handleMouseClick(evt) {
+		if(showingWinScreen) {
+			player1Score = 0;
+			player2Score = 0;
+			showingWinScreen = false;
+		}
+	}
 //Setting up our area
 window.onload = function() {
 		
-		canvas = document.getElementById('gameCanvas');
+		canvas = document.getElementById('gameCanvas')
 		canvasContext = canvas.getContext('2d');
 		
 //Setting the Speed of display
