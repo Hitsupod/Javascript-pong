@@ -1,9 +1,10 @@
 ## Javascript-pong
-<html>
-	<canvas id = "gameCanvas" width = "800" height = "600">
-	</canvas>
-<script>
-//Things that will need to stay frame to frame
+	<html>
+		<canvas id = "gameCanvas" width = "800" height = "600">
+		</canvas>
+	<script>
+	
+## Things that will need to stay frame to frame
 	var canvas;
 	var canvasContext;
 	var ballX = 50;
@@ -24,6 +25,7 @@
 	var paddle2Y = 250;
 	const PADDLE_HEIGHT = 100;
 	const PADDLE_THICKNESS = 10;
+	
 ## How the paddle finds the mouse.
 	function calculateMousePos(evt) {
 		var rect = canvas.getBoundingClientRect();
@@ -35,6 +37,7 @@
 			y:mouseY
 		};
 	}
+	
 ## Evt for Clearing Score
 	function handleMouseClick(evt) {
 		if(showingWinScreen) {
@@ -43,8 +46,9 @@
 			showingWinScreen = false;
 		}
 	}
+	
 ## Setting up our area
-window.onload = function() {
+	window.onload = function() {
 		
 		canvas = document.getElementById('gameCanvas')
 		canvasContext = canvas.getContext('2d');
@@ -59,15 +63,15 @@ window.onload = function() {
 ## End Event
 		canvas.addEventListener('mousedown', handleMouseClick);
 		
-## The evt
+## The Event
 		canvas.addEventListener('mousemove', function(evt) {
 			var mousePos = calculateMousePos(evt);
 			paddle1Y = mousePos.y - (PADDLE_HEIGHT/2);
 		});
-}
+	}
 
 ## If the ball moves off the screen Reset
-function ballReset(){
+	function ballReset(){
 		if (player1Score >= WINNING_SCORE ||
 			player2Score >= WINNING_SCORE) {
 			player1Score = 0;
@@ -77,22 +81,22 @@ function ballReset(){
 		ballSpeedX = -ballSpeedX;
 		ballX = canvas.width/2;
 		bally = canvas.height/2;
-}
+	}
 
 
 ## Movement Right
-function computerMovement() {
+	function computerMovement() {
 		var paddle2YCenter = paddle2Y + (PADDLE_HEIGHT/2);
 		if(paddle2YCenter < ballY-35) {
 				paddle2Y += 3;
 			} else if(paddle2YCenter > ballY-35) {
 				paddle2Y -= 3; 
 			}
-}
+	}
 
 
 ## Movement Left
-function moveEverything (){
+	function moveEverything (){
 		if(showingWinScreen) {
 			return;
 		}
@@ -132,19 +136,19 @@ function moveEverything (){
 		if(ballY > canvas.height) {
 			ballSpeedY = -ballSpeedY;
 		}
-}
+	}
 
 
 ## Net 
-function drawNet() {
+	function drawNet() {
 	for(var i=0; i<canvas.height; i += 40) {
 		colorRect (canvas.width/2-1,i,2,20,'white');
 		}
-}
+	}
 
 
-##Ball & Panel 
-function drawEverything(){
+## Ball & Panel 
+	function drawEverything(){
 		// Draws the page black
 		colorRect(0,0, canvas.width, canvas.height, 'black');
 		// Win Screen
@@ -169,22 +173,23 @@ function drawEverything(){
 		// The score
 		canvasContext.fillText(player1Score, 100, 100);
 		canvasContext.fillText(player2Score, canvas.width-100, 100);
-}
+	}
 
 
 ## Draws the ball
-function colorCircle(centerX, centerY, radius, drawColor){
+	function colorCircle(centerX, centerY, radius, drawColor){
 		canvasContext.fillStyle = drawColor;
 		canvasContext.beginPath();
 		canvasContext.arc(centerX, centerY, radius, 0, Math.PI*2, true);
 		canvasContext.fill();
-}
+	}
+	
 ## Looks/Outline
-function colorRect(leftX,topY, width, height, drawColor) {
+	function colorRect(leftX,topY, width, height, drawColor) {
 		canvasContext.fillStyle = drawColor;
 		canvasContext.fillRect(leftX, topY, width, height);
-}
+	}
 
-</script
+	</script
 
-</html>
+	</html>
