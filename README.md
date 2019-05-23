@@ -1,4 +1,4 @@
-# Javascript-pong
+## Javascript-pong
 <html>
 	<canvas id = "gameCanvas" width = "800" height = "600">
 	</canvas>
@@ -11,20 +11,20 @@
 	var ballSpeedX = 15;
 	var ballSpeedY = 4;
 
-// Player Score
+## Player Score
 	var player1Score = 0;
 	var player2Score = 0;
 	const WINNING_SCORE = 2;
 
-//Winning Screen
+## Winning Screen
 	var showingWinScreen = false;
 
-// Player Paddles
+## Player Paddles
 	var paddle1Y = 250;
 	var paddle2Y = 250;
 	const PADDLE_HEIGHT = 100;
 	const PADDLE_THICKNESS = 10;
-// How the paddle finds the mouse.
+## How the paddle finds the mouse.
 	function calculateMousePos(evt) {
 		var rect = canvas.getBoundingClientRect();
 		var root = document.documentElement;
@@ -35,7 +35,7 @@
 			y:mouseY
 		};
 	}
-// Evt for Clearing Score
+## Evt for Clearing Score
 	function handleMouseClick(evt) {
 		if(showingWinScreen) {
 			player1Score = 0;
@@ -43,30 +43,30 @@
 			showingWinScreen = false;
 		}
 	}
-//Setting up our area
+## Setting up our area
 window.onload = function() {
 		
 		canvas = document.getElementById('gameCanvas')
 		canvasContext = canvas.getContext('2d');
 		
-//Setting the Speed of display
+## Setting the Speed of display
 		var framesPerSecond = 30;
 		setInterval(function (){
 			moveEverything();
 			drawEverything();
 		}, 1000/framesPerSecond );	
 		
-// End Event
+## End Event
 		canvas.addEventListener('mousedown', handleMouseClick);
 		
-// The evt
+## The evt
 		canvas.addEventListener('mousemove', function(evt) {
 			var mousePos = calculateMousePos(evt);
 			paddle1Y = mousePos.y - (PADDLE_HEIGHT/2);
 		});
 }
 
-// If the ball moves off the screen Reset
+## If the ball moves off the screen Reset
 function ballReset(){
 		if (player1Score >= WINNING_SCORE ||
 			player2Score >= WINNING_SCORE) {
@@ -78,7 +78,9 @@ function ballReset(){
 		ballX = canvas.width/2;
 		bally = canvas.height/2;
 }
-// Movement Right
+
+
+## Movement Right
 function computerMovement() {
 		var paddle2YCenter = paddle2Y + (PADDLE_HEIGHT/2);
 		if(paddle2YCenter < ballY-35) {
@@ -87,6 +89,8 @@ function computerMovement() {
 				paddle2Y -= 3; 
 			}
 }
+
+
 ## Movement Left
 function moveEverything (){
 		if(showingWinScreen) {
