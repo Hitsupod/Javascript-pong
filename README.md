@@ -87,7 +87,7 @@ function computerMovement() {
 				paddle2Y -= 3; 
 			}
 }
-// Movement Left
+## Movement Left
 function moveEverything (){
 		if(showingWinScreen) {
 			return;
@@ -129,13 +129,17 @@ function moveEverything (){
 			ballSpeedY = -ballSpeedY;
 		}
 }
-//Net 
+
+
+## Net 
 function drawNet() {
 	for(var i=0; i<canvas.height; i += 40) {
 		colorRect (canvas.width/2-1,i,2,20,'white');
 		}
 }
-//Ball & Panel 
+
+
+##Ball & Panel 
 function drawEverything(){
 		// Draws the page black
 		colorRect(0,0, canvas.width, canvas.height, 'black');
@@ -150,7 +154,7 @@ function drawEverything(){
 				canvasContext.fillText("Click to continue", 350, 400);
 				return;
 		}
-		// Draw Net
+		## Draw Net
 		drawNet();
 		// Draws the left
 		colorRect(0, paddle1Y, PADDLE_THICKNESS, PADDLE_HEIGHT, 'white');
@@ -162,14 +166,16 @@ function drawEverything(){
 		canvasContext.fillText(player1Score, 100, 100);
 		canvasContext.fillText(player2Score, canvas.width-100, 100);
 }
-// Draws the ball
+
+
+## Draws the ball
 function colorCircle(centerX, centerY, radius, drawColor){
 		canvasContext.fillStyle = drawColor;
 		canvasContext.beginPath();
 		canvasContext.arc(centerX, centerY, radius, 0, Math.PI*2, true);
 		canvasContext.fill();
 }
-//Looks
+## Looks/Outline
 function colorRect(leftX,topY, width, height, drawColor) {
 		canvasContext.fillStyle = drawColor;
 		canvasContext.fillRect(leftX, topY, width, height);
